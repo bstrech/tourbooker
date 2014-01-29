@@ -1,0 +1,71 @@
+************************************************
+DEVELOPMENT ENVIRONMENT SETUP
+************************************************
+
+Install RVM
+______________________________________
+curl -L https://get.rvm.io | bash -s stable
+source /Users/[yourusername]/.rvm/scripts/rvm
+
+Install Ruby 1.9.3 on RVM
+______________________________________
+rvm install ruby-1.9.3-p362
+(if this doesn't work for you, you might try:
+env ARCHFLAGS="-arch x86-64" rvm install ruby-1.9.3-p362)
+
+Switch RVM to use this ruby
+______________________________________
+rvm ruby-1.9.3-p362
+
+Confirm RVM Ruby Version
+______________________________________
+ruby -v
+
+Create the RVM gemset for this project
+______________________________________
+rvm gemset create tourbooker
+
+Use this gemset
+______________________________________
+rvm use ruby-1.9.3-p362@tourbooker
+
+
+
+
+Install Bundler
+______________________________________
+gem install bundler
+
+# Normally I would install phantomjs on a project as well. Not needed for this project.
+Install phantomjs
+______________________________________
+Install phantomjs in order to run tests headless on the command line. The easiest way (on a Mac) is to use homebrew - https://github.com/mxcl/homebrew:
+
+brew install phantomjs
+
+
+Install rails & dependencies
+_______________________________________
+bundle install
+You should be ready to run!
+
+Start your server
+_______________________________________
+rails server
+
+In your browser navigate to http://localhost:3000
+
+
+************************************************
+DEPLOYMENT SETUP
+************************************************
+
+I have set up the app to deploy with capistrano (just what I have used in the past), but the configurations have not been set up yet.
+
+
+Some things that need to happen (this is not an inclusive list or necessarily in order)
+1. Add all deployment steps (i.e. run bundle install, run migrations, generate assets for pipeline, restart server)
+2. Add argument to production deploy to indicate a tag/git sha to deploy (I firmly believe in tagging the repo for releases to production and knowing exactly what you are deploying)
+3. Add configurations for database.yml (should be a separate copy which isn't kept in git and only on the production servers)
+4. Configure environment specific deploy files (production and staging are there by default)
+
