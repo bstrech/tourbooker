@@ -1,4 +1,9 @@
 Tourbooker::Application.routes.draw do
+  resources :users
+
+
+  mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

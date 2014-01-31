@@ -5,7 +5,48 @@
     <ignored path="tourbooker.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="$PROJECT_DIR$/../enphase/embedded/current/backbone/envoy-rails/Gemfile" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1390979492199" ignored="false" />
-    <file path="/Dummy.txt" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1390980938731" ignored="false" />
+    <file path="/Dummy.txt" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391139562305" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/spec/routing/sites/activation_methods_routing_spec.rb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391023859266" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/spec/routing/sites_controller_routing_spec.rb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391023157528" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/config/routes.rb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391104714488" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/app/controllers/sites/activation_methods.rb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391025118559" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/spec/controllers/sites/activation_methods_spec.rb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391024819223" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/app/views/sites/checklist.erb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391031616889" ignored="false" />
+    <file path="/a.dummy" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391131408779" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/test/selenium/smoke_tests/api_v2_spec.rb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391034847322" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/app/views/eeadmin/sites/show.rhtml" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391040914632" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/app/helpers/cobrand_helper.rb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391040844054" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/app/views/common/_page_header.html.erb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391040862201" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/app/views/common/_page_header.mobile.erb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391040883174" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/db/migrate/20140130001559_drop_suppress_co_brand_from_site.rb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391041361008" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/db/schema.rb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391098593610" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/app/helpers/device_helper.rb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391099430213" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/app/views/admin/_device_by_type_list.erb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391099430213" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/app/views/admin/devices/_device_channels.erb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391099567217" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/spec/controllers/eeadmin/sites_controller_spec.rb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391101059152" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/app/controllers/consumer/common/filters.rb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391104714488" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/config/locales/en-US.yml" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391105192403" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/app/views/common/_data_table.erb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391105043144" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/public/javascripts/e3/translations.js" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391105442100" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/public/javascripts/consumer/app/translations.js" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391105442100" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/public/assets/basic.js" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391105442100" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/public/assets/consumer.js" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391129220226" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/public/assets/e3_basic.js" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391105442100" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/public/assets/e3_mobile_basic.js" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391105442100" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/public/assets/mini_basic.js" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391105442100" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/app/views/widgets/_reports.rhtml" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391109467117" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/public/javascripts/consumer/rails/system_dashboard.js" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391110833989" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/app/views/consumer/system_dashboard.erb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391110958749" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/app/controllers/emu_reports_controller.rb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391111335732" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/spec/lib/partition_archiver_spec.rb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391111335732" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/embedded/current/backbone/envoy-rails/app/assets/templates/set_microinverter_count.jst.ejs" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391120891390" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/app/views/consumer/settings.erb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391129093743" ignored="false" />
+    <file path="$PROJECT_DIR$/../enphase/rails/rel/enlighten2.x/app/views/layouts/e3_empty.erb" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391132204567" ignored="false" />
+    <file path="$USER_HOME$/Sites/cenco/index.php" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391135801776" ignored="false" />
+    <file path="$USER_HOME$/Sites/cenco/news/2014kagami_biraki.php" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391135596581" ignored="false" />
+    <file path="$USER_HOME$/Sites/cenco/news/2013_sato_clinic.php" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391135581284" ignored="false" />
+    <file path="$USER_HOME$/Sites/cenco/news/subnav.inc.php" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391135684291" ignored="false" />
+    <file path="$USER_HOME$/Sites/cenco/news/index.php" changelist="80803d47-6add-4ccb-a390-1e063603231e" time="1391136326198" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,17 +66,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Gemfile">
+      <file leaf-file-name="users_routing_spec.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spec/routing/users_routing_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="32" selection-start="326" selection-end="326" vertical-scroll-proportion="0.0">
+            <state line="32" column="0" selection-start="767" selection-end="767" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gemfile.lock" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Gemfile.lock">
+      <file leaf-file-name="users_controller_spec.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spec/controllers/users_controller_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
@@ -43,46 +84,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="production.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
+      <file leaf-file-name="spec_helper.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spec/spec_helper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="30" selection-start="828" selection-end="828" vertical-scroll-proportion="0.0">
+            <state line="33" column="42" selection-start="1111" selection-end="1111" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="staging.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/deploy/staging.rb">
+      <file leaf-file-name="edit.html.erb_spec.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spec/views/users/edit.html.erb_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="37" column="7" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deploy.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/deploy.rb">
+      <file leaf-file-name="index.html.erb_spec.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spec/views/users/index.html.erb_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="33" selection-start="850" selection-end="850" vertical-scroll-proportion="0.0">
+            <state line="49" column="0" selection-start="1560" selection-end="1560" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Capfile" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Capfile">
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="16" column="4" selection-start="444" selection-end="444" vertical-scroll-proportion="0.27842227">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_helper.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test_helper.rb">
+      <file leaf-file-name="test.log" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/log/test.log">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="5" column="0" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -91,14 +132,14 @@
       <file leaf-file-name="database.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/database.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="9" selection-start="589" selection-end="589" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.rdoc" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.rdoc">
+      <file leaf-file-name="tourbookerdevelopment.sqlite3" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/tourbookerdevelopment.sqlite3">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
@@ -106,10 +147,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README">
+      <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="57" selection-start="1981" selection-end="1981" vertical-scroll-proportion="0.78984237">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -125,8 +166,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/.ruby-version" />
         <option value="$PROJECT_DIR$/.ruby-gemset" />
         <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/config/database.yml" />
@@ -134,6 +173,15 @@
         <option value="$PROJECT_DIR$/doc/README_FOR_APP" />
         <option value="$PROJECT_DIR$/config/deploy.rb" />
         <option value="$PROJECT_DIR$/README" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/config/locales/en.yml" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20140131032845_create_users.rb" />
+        <option value="$PROJECT_DIR$/log/test.log" />
+        <option value="$PROJECT_DIR$/spec/spec_helper.rb" />
+        <option value="$PROJECT_DIR$/spec/views/users/index.html.erb_spec.rb" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -145,8 +193,8 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="104" />
-    <option name="y" value="84" />
+    <option name="x" value="274" />
+    <option name="y" value="22" />
     <option name="width" value="1660" />
     <option name="height" value="1010" />
   </component>
@@ -345,7 +393,153 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="log" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="capistrano" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="locales" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tourbooker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="environments" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -463,6 +657,26 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
       <method />
     </configuration>
+    <configuration default="true" type="RubyRunConfigurationType" factoryName="Ruby">
+      <module name="" />
+      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest">
       <predefined_log_file id="RUBY_TESTUNIT" enabled="true" />
       <module name="" />
@@ -487,6 +701,13 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="false" name="Production: tourbooker" type="RailsRunConfigurationType" factoryName="Rails">
@@ -627,22 +848,22 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="104" y="84" width="1660" height="1010" extended-state="0" />
+    <frame x="274" y="22" width="1660" height="1010" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32968238" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2496902" sideWeight="0.67031765" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32968238" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32968238" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -710,56 +931,42 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/spec/factories/users.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="9" selection-start="298" selection-end="298" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.ruby-version">
+    <entry file="file://$PROJECT_DIR$/spec/javascripts/support/jasmine.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="15" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.ruby-gemset">
+    <entry file="file://$PROJECT_DIR$/spec/models/user_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="10" selection-start="10" selection-end="10" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
+    <entry file="file://$PROJECT_DIR$/spec/requests/users_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="3" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/locales/en.yml">
+    <entry file="file://$PROJECT_DIR$/spec/routing/users_routing_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="214" selection-end="214" vertical-scroll-proportion="0.0">
+        <state line="32" column="0" selection-start="767" selection-end="767" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/application.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="47" selection-start="1680" selection-end="1680" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/database.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="9" selection-start="589" selection-end="589" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_helper.rb">
+    <entry file="file://$PROJECT_DIR$/spec/controllers/users_controller_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
@@ -768,56 +975,70 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="32" selection-start="326" selection-end="326" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile.lock">
+    <entry file="file://$PROJECT_DIR$/db/tourbookerdevelopment.sqlite3">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.rdoc">
+    <entry file="file://$PROJECT_DIR$/db/tourbookertest.sqlite3">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Capfile">
+    <entry file="file://$PROJECT_DIR$/config/database.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/deploy/staging.rb">
+    <entry file="file://$PROJECT_DIR$/log/test.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/spec_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="42" selection-start="1111" selection-end="1111" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/views/users/edit.html.erb_spec.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="7" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/true">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
+    <entry file="file://$PROJECT_DIR$/spec/views/users/index.html.erb_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="30" selection-start="828" selection-end="828" vertical-scroll-proportion="0.0">
+        <state line="49" column="0" selection-start="1560" selection-end="1560" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/deploy.rb">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="33" selection-start="850" selection-end="850" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="57" selection-start="1981" selection-end="1981" vertical-scroll-proportion="0.78984237">
+        <state line="16" column="4" selection-start="444" selection-end="444" vertical-scroll-proportion="0.27842227">
           <folding />
         </state>
       </provider>

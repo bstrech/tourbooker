@@ -1,0 +1,69 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :token %><br />
+    <%= f.text_field :token %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :ip_address %><br />
+    <%= f.text_field :ip_address %>
+  </div>
+  <div class="field">
+    <%= f.label :preferred_tour_date %><br />
+    <%= f.date_select :preferred_tour_date %>
+  </div>
+  <div class="field">
+    <%= f.label :amn_pool %><br />
+    <%= f.check_box :amn_pool %>
+  </div>
+  <div class="field">
+    <%= f.label :amn_rec_room %><br />
+    <%= f.check_box :amn_rec_room %>
+  </div>
+  <div class="field">
+    <%= f.label :amn_movie_theater %><br />
+    <%= f.check_box :amn_movie_theater %>
+  </div>
+  <div class="field">
+    <%= f.label :amn_doctor %><br />
+    <%= f.check_box :amn_doctor %>
+  </div>
+  <div class="field">
+    <%= f.label :amn_time_machine %><br />
+    <%= f.check_box :amn_time_machine %>
+  </div>
+  <div class="field">
+    <%= f.label :rating %><br />
+    <%= f.number_field :rating %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

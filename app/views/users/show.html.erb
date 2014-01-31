@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Token:</b>
+  <%= @user.token %>
+</p>
+
+<p>
+  <b>First name:</b>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @user.phone %>
+</p>
+
+<p>
+  <b>Ip address:</b>
+  <%= @user.ip_address %>
+</p>
+
+<p>
+  <b>Preferred tour date:</b>
+  <%= @user.preferred_tour_date %>
+</p>
+
+<p>
+  <b>Amn pool:</b>
+  <%= @user.amn_pool %>
+</p>
+
+<p>
+  <b>Amn rec room:</b>
+  <%= @user.amn_rec_room %>
+</p>
+
+<p>
+  <b>Amn movie theater:</b>
+  <%= @user.amn_movie_theater %>
+</p>
+
+<p>
+  <b>Amn doctor:</b>
+  <%= @user.amn_doctor %>
+</p>
+
+<p>
+  <b>Amn time machine:</b>
+  <%= @user.amn_time_machine %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%= @user.rating %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
