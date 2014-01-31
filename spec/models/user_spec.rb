@@ -3,8 +3,8 @@ require 'spec_helper'
 describe User do
   describe "strip_attributes" do
     it "should strip leading and trailing whitespace from attributes" do
-      user = User.create(:email=>" bs@test.com ", :first_name=>" Joe ", :last_name=>" User ", :phone=>" 1-800-555-4545 ")
-      user.email.should == "bs@test.com"
+      user = User.create(:email=>" bs@yopmail.com ", :first_name=>" Joe ", :last_name=>" User ", :phone=>" 1-800-555-4545 ")
+      user.email.should == "bs@yopmail.com"
       user.first_name.should == "Joe"
       user.last_name.should == "User"
       user.phone.should == "1-800-555-4545"
@@ -23,6 +23,16 @@ describe User do
         user = User.new(:first_name=>'new', :last_name=>'user', :email=>joeuser.email.upcase)
         user.valid?.should be_false
         user.errors[:email].first.should == I18n.t("activerecord.errors.models.user.attributes.email.taken")
+      end
+      describe "validates_format_of email" do
+        before do
+          @user = FactoryGirl.create(:user)
+        end
+        it "should not allow email value of 'test@test.com test1@test.com'" do
+          @user.email = "test@test.com test1@test.com"
+          @user.valid?.should be_false
+          @user.errors[:email].first.should == I18n.t('activerecord.errors.models.user.attributes.email.invalid')
+        end
       end
     end
   end

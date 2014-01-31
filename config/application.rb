@@ -59,5 +59,8 @@ module Tourbooker
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    #regex to validate emails
+    $EMAIL_FORMAT = /^[A-Z0-9._%-]+(\+){0,1}([\w-]+)?@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i
   end
 end
