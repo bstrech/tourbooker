@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(:version => 20140131032845) do
     t.boolean  "amn_doctor"
     t.boolean  "amn_time_machine"
     t.integer  "rating"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.string   "aasm_state",          :default => "new"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

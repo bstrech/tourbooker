@@ -14,7 +14,7 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :amn_doctor
       t.boolean :amn_time_machine
       t.integer :rating
-
+      t.string :aasm_state, :default => 'new'
       t.timestamps
     end
     add_index :users, :email

@@ -3,3 +3,18 @@
 
 en:
   app_name: "TourBooker"
+
+  activerecord:
+    errors:
+      messages:
+        blank: "can't be blank"
+      email:
+        invalid: "must be a valid email address."
+        taken: "has already been registered"
+    attributes:
+      user:
+        aasm_state:  "State"
+        aasm_state/new: "New"
+        aasm_state/validated: "Validated"
+        aasm_state/registered: "Registered"
+
