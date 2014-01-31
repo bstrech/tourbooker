@@ -9,7 +9,4 @@ class User < ActiveRecord::Base
   def downcase_email
     self.email.downcase! if email
   end
-  def check_email_format
-    errors.add(:email, I18n.t('activerecord.errors.models.user.attributes.email.invalid')) unless $EMAIL_FORMAT.match(self.email)
-  end
 end
