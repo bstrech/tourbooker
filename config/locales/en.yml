@@ -13,12 +13,14 @@ en:
           attributes:
             email:
               invalid: "must be a valid email address."
-              taken: "has already been registered"
+              taken: "has already been registered."
+            rating:
+              inclusion: "must be 1-5."
     attributes:
       user:
         aasm_state:  "State"
         aasm_state/new: "New"
         aasm_state/registering: "Registering"
-        aasm_state/rating: "Rating"
+        aasm_state/registered: "Registered"
         aasm_state/done: "Done"
 
