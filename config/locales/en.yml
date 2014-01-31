@@ -8,9 +8,12 @@ en:
     errors:
       messages:
         blank: "can't be blank"
-      email:
-        invalid: "must be a valid email address."
-        taken: "has already been registered"
+      models:
+        user:
+          attributes:
+            email:
+              invalid: "must be a valid email address."
+              taken: "has already been registered"
     attributes:
       user:
         aasm_state:  "State"

@@ -18,12 +18,29 @@ describe User do
         u.errors[:email].include?("can't be blank").should be_true
         u.errors.size.should == 1
       end
-      it "should be unique" do
-
+      it "should send back the taken message when email is not unique" do
+        joeuser = FactoryGirl.create(:user)
+        user = User.new(:first_name=>'new', :last_name=>'user', :email=>joeuser.email.upcase)
+        user.valid?.should be_false
+        user.errors[:email].first.should == I18n.t("activerecord.errors.models.user.attributes.email.taken")
       end
     end
   end
   describe "#states" do
 
+  end
+  describe "#callbacks" do
+    it "should save emails in lowercase on create" do
+      user = User.new(:first_name=>'new', :last_name=>'user')
+      user.email = 'TestUser@MyCompany.com'
+      user.save.should be_true
+      user.reload.email.should == 'testuser@mycompany.com'
+    end
+    it "should save emails in lowercase on update" do
+      user = FactoryGirl.create(:user)
+      user.new_record?.should be_false
+      user.update_attributes(:email=>'TestUser@MyCompany.com')
+      user.email.should == 'testuser@mycompany.com'
+    end
   end
 end
