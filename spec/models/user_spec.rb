@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
   describe "strip_attributes" do
     it "should strip leading and trailing whitespace from attributes" do
-      user = User.create(:email=>" bs@yopmail.com ", :first_name=>" Joe ", :last_name=>" User ", :phone=>" 1-800-555-4545 ")
+      user = FactoryGirl.create(:user, :email=>" bs@yopmail.com ", :first_name=>" Joe ", :last_name=>" User ", :phone=>" 1-800-555-4545 ")
       user.email.should == "bs@yopmail.com"
       user.first_name.should == "Joe"
       user.last_name.should == "User"
@@ -16,7 +16,6 @@ describe User do
         u = User.new(:first_name => 'first', :last_name => 'Last')
         u.valid?.should be_false
         u.errors[:email].include?("can't be blank").should be_true
-        u.errors.size.should == 1
       end
       it "should send back the taken message when email is not unique" do
         joeuser = FactoryGirl.create(:user)
@@ -37,7 +36,39 @@ describe User do
     end
   end
   describe "#states" do
+    it "should set the state as new when initializing" do
+      user = User.new(:first_name=>'new', :last_name=>'user')
+      user.aasm_state.should =="new"
+      user.new?.should be_true
+    end
+    describe "transitions" do
+      it "should set the right states when transitioning" do
+        user = FactoryGirl.build(:user, done:false)
+        user.aasm_state.should =="new"
+        user.new?.should be_true
+        user.may_validate?.should be_true
+        user.may_register?.should be_false
+        user.may_rate?.should be_false
 
+        user.validate
+        user.registering?.should be_true
+        user.may_validate?.should be_false
+        user.may_register?.should be_true
+        user.may_rate?.should be_false
+
+        user.register
+        user.rating?.should be_true
+        user.may_validate?.should be_false
+        user.may_register?.should be_false
+        user.may_rate?.should be_true
+
+        user.rate
+        user.done?.should be_true
+        user.may_validate?.should be_false
+        user.may_register?.should be_false
+        user.may_rate?.should be_false
+      end
+    end
   end
   describe "#callbacks" do
     it "should save emails in lowercase on create" do

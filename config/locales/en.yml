@@ -18,6 +18,7 @@ en:
       user:
         aasm_state:  "State"
         aasm_state/new: "New"
-        aasm_state/validated: "Validated"
-        aasm_state/registered: "Registered"
+        aasm_state/registering: "Registering"
+        aasm_state/rating: "Rating"
+        aasm_state/done: "Done"
 
