@@ -47,7 +47,6 @@ brew install phantomjs
 
 ==Install rails & dependencies
 bundle install
-You should be ready to run!
 
 ==Run migrations
 bundle exec rake db:test:clone
