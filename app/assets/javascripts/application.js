@@ -12,4 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap3.1.0
+//= require jquery.validate
 //= require_tree .
