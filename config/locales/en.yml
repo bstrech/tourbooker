@@ -38,7 +38,7 @@ en:
         aasm_state/done: "Done"
   helpers:
     submit:
-      create: "Submit"
+      create: "Go"
   views:
     new_user:
       get_started: "Get started by entering your email"

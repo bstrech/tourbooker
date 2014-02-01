@@ -1,6 +1,6 @@
 Tourbooker::Application.routes.draw do
   root :to => "users#new"
-  match "/users" => redirect("/users/new")
+
   resources :users, :only=>[:new, :create] do
     member do
 
