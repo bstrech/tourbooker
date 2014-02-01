@@ -43,6 +43,7 @@ en:
   views:
     errors:
       not_found: "Not Found"
+      oops_html: "Oops! Looks like you came here directly. <a href='/'>Go to home.</a>"
     success:
       create_success: "Success! Please check your email to activate your registration."
       found_success_html: "You have already started a registration in the past. Use the link in the email we sent you to activate your registration. Need a new email sent? <a href='%{link}'>Get a new activation email.</a>"
