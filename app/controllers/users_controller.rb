@@ -10,10 +10,10 @@ class UsersController < ApplicationController
     @user = User.find_or_initialize_by_email(params[:user][:email])
 
     if !@user.new_record?
-      redirect_to create_success_user_path(@user), notice: I18n.t("views.success.found_success_html", :link=>resend_authorization_user_path(@user))
+      redirect_to create_success_user_path(@user, :token=>@user.token), notice: I18n.t("views.success.found_success_html", :link=>resend_authorization_user_path(@user, :token=>@user.token))
     elsif @user.save
       #TODO send email here
-      redirect_to create_success_user_path(@user), notice: I18n.t("views.success.create_success")
+      redirect_to create_success_user_path(@user, :token=>@user.token), notice: I18n.t("views.success.create_success")
     else
       render action: "new"
     end
@@ -34,12 +34,12 @@ class UsersController < ApplicationController
   # GET /users/1/resend_authorization
   def resend_authorization
     #TODO send email here
-    redirect_to create_success_user_path(@user), notice: I18n.t("views.success.create_success")
+    redirect_to create_success_user_path(@user, :token=>@user.token), notice: I18n.t("views.success.create_success")
   end
 
   private
   def require_user
-    @user = User.find_by_id(params[:id])
+    @user = User.find_by_id_and_token(params[:id], params[:token])
     unless @user
       redirect_to(root_path()) and return false
     end

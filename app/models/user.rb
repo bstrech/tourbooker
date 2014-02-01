@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
     self.email.downcase! if email
   end
   def generate_token
-    self.token = SecureRandom.base64(15).tr('+/=', 'xyz')
+    self.token = SecureRandom.base64(15).tr('+/=', 'xyz')  if self.token.blank?
   end
   def past_step_2
     states = []

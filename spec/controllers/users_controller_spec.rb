@@ -31,8 +31,10 @@ describe UsersController do
       end
 
       it "redirects to the success page" do
-        post :create, {:user => {:email=>FactoryGirl.generate(:email)}}, valid_session
-        response.should redirect_to(create_success_user_path(User.last))
+        email = FactoryGirl.generate(:email)
+        post :create, {:user => {:email=>email}}, valid_session
+        user = User.find_by_email(email)
+        response.should redirect_to(create_success_user_path(user, :token=>user.token))
       end
 
       it "assigns the right notice message" do
@@ -62,12 +64,12 @@ describe UsersController do
 
       it "assigns the right notice message" do
         post :create, {:user => {:email=>@user.email}}, valid_session
-        request.flash[:notice].should == I18n.t("views.success.found_success_html", :link=>resend_authorization_user_path(@user))
+        request.flash[:notice].should == I18n.t("views.success.found_success_html", :link=>resend_authorization_user_path(@user, :token=>@user.token))
       end
 
       it "redirects to the success page" do
         post :create, {:user => {:email=>@user.email}}, valid_session
-        response.should redirect_to(create_success_user_path(@user))
+        response.should redirect_to(create_success_user_path(@user, :token=>@user.token))
       end
     end
     describe "with invalid params" do
@@ -132,8 +134,13 @@ describe UsersController do
   end
 
   describe "GET create_success" do
-    it "should redirect to root if user is not found" do
+    it "should redirect to root if user id is not found" do
       get :create_success, {:id=>0}, valid_session
+      response.should redirect_to(root_path())
+    end
+    it "should redirect to root if user is found but token doesn't match" do
+      @user = FactoryGirl.create(:user, is_done: false)
+      get :create_success, {:id=>@user.id, :token=>"#{@user.token}r"}, valid_session
       response.should redirect_to(root_path())
     end
   end
@@ -143,16 +150,21 @@ describe UsersController do
       get :resend_authorization, {:id=>0}, valid_session
       response.should redirect_to(root_path())
     end
+    it "should redirect to root if user is found but token doesn't match" do
+      @user = FactoryGirl.create(:user, is_done: false)
+      get :resend_authorization, {:id=>@user.id, :token=>"#{@user.token}r"}, valid_session
+      response.should redirect_to(root_path())
+    end
     context "when user is found" do
       before do
         @user = FactoryGirl.create(:user, is_done: false)
       end
       it "should redirect to create_success if user is found" do
-        get :resend_authorization, {:id=>@user.id}, valid_session
-        response.should redirect_to(create_success_user_path(User.last))
+        get :resend_authorization, {:id=>@user.id, :token=>@user.token}, valid_session
+        response.should redirect_to(create_success_user_path(@user, :token=>@user.token))
       end
       it "assigns the right notice message" do
-        get :resend_authorization, {:id=>@user.id}, valid_session
+        get :resend_authorization, {:id=>@user.id, :token=>@user.token}, valid_session
         request.flash[:notice].should == I18n.t("views.success.create_success")
       end
     end
