@@ -1,7 +1,11 @@
 Tourbooker::Application.routes.draw do
-  resources :users
+  root :to => "users#new"
+  match "/users" => redirect("/users/new")
+  resources :users, :only=>[:new, :create] do
+    member do
 
-
+    end
+  end
   mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)
 
   # The priority is based upon order of creation:
