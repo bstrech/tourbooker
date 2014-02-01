@@ -32,7 +32,9 @@ class User < ActiveRecord::Base
       transitions :from => :registered, :to => :done
     end
   end
-
+  def send_create_email
+    UserMailer.create_user(self).deliver if !self.new_record?
+  end
   private
   def downcase_email
     self.email.downcase! if email

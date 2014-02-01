@@ -5,6 +5,7 @@ Tourbooker::Application.routes.draw do
     member do
       get :create_success
       get :resend_authorization
+      get :authorize
     end
   end
   mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)

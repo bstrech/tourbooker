@@ -230,4 +230,16 @@ describe User do
       user.token.should_not be_nil
     end
   end
+  describe "#send_create_email" do
+    before do
+      @user = FactoryGirl.create(:user, is_done: false)
+    end
+    it "should deliver email" do
+      @user.send_create_email
+      email = ActionMailer::Base.deliveries.last
+      email.from.should == ["donotreply@example.com"]
+      email.to.should == [@user.email]
+      email.subject.should == I18n.t("actionmailer.authorize_user.subject")
+    end
+  end
 end

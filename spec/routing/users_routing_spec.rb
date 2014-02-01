@@ -14,5 +14,8 @@ describe UsersController do
     it "routes to #resend_authorization" do
       get("/users/1/resend_authorization").should route_to("users#resend_authorization", :id=>"1")
     end
+    it "routes to #authorize" do
+      get("/users/1/authorize").should route_to("users#authorize", :id=>"1")
+    end
   end
 end

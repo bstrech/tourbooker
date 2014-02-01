@@ -57,10 +57,24 @@ module Tourbooker
     # Enable the asset pipeline
     config.assets.enabled = true
 
+
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
     #regex to validate emails
     $EMAIL_FORMAT = /^[A-Z0-9._%-]+(\+){0,1}([\w-]+)?@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i
+
+    #SMTP
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        address:              'smtp.gmail.com',
+        port:                 587,
+        domain:               'example.com',
+        user_name:            '<username>',
+        password:             '<password>',
+        authentication:       'plain',
+        enable_starttls_auto: true  }
+    config.action_mailer.default_url_options = { host: 'example.com' }
   end
 end

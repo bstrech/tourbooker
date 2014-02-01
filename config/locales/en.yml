@@ -40,6 +40,13 @@ en:
   helpers:
     submit:
       create: "Go"
+  action_mailer:
+    authorize_user:
+      subject: "Tourbooker Registration Request"
+      line_1: "Thank you for signing up at Tourbooker."
+      line_2: |
+        To complete your registration please follow this link:
+        %{link}
   views:
     errors:
       not_found: "Not Found"
