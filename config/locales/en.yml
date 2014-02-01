@@ -18,9 +18,31 @@ en:
               inclusion: "must be 1-5."
     attributes:
       user:
+        email: "Email Address"
+        token: "Token"
+        first_name: "First Name"
+        last_name: "Last Name"
+        phone: "Phone"
+        ip_address: "IP Address"
+        preferred_tour_date: "Preferred Tour Date"
+        amn_pool: "Pool"
+        amn_rec_room: "Recreation Room"
+        amn_movie_theater: "Movie Theater"
+        amn_doctor: "On Site Doctor"
+        amn_time_machine: "Time Machine"
+        rating: "Experience Rating"
         aasm_state:  "State"
         aasm_state/new: "New"
         aasm_state/registering: "Registering"
         aasm_state/registered: "Registered"
         aasm_state/done: "Done"
+  helpers:
+    submit:
+      create: "Submit"
+  views:
+    new_user:
+      get_started: "Get started by entering your email"
+    user_create_error:
+      one: "Couldn't register for a tour due to the following error"
+      other: "Couldn't register for a tour due to the following errors"
 
