@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to create_success_user_path(@user), notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
-    @user = User.find(params[:id])
+    @user = User.find_by_id(params[:id])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -41,5 +41,17 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+  def create_success
+    @user = User.find_by_id(params[:id])
+    respond_to do |format|
+       unless @user
+         format.html { render action: "new"}
+         format.json { render json: I18n.t("views.errors.not_found"), status: :unprocessable_entity }
+       end
+
+    end
+
+
   end
 end

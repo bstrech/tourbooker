@@ -23,22 +23,22 @@ describe UsersController do
   end
 
   describe "POST create" do
-    describe "with valid params" do
-      xit "creates a new User" do
+    describe "with valid params of a user email that doesn't exist" do
+      it "creates a new User when the email is not found" do
         expect {
-          post :create, {:user => valid_attributes}, valid_session
+          post :create, {:user => {:email=>FactoryGirl.generate(:email)}}, valid_session
         }.to change(User, :count).by(1)
       end
 
-      xit "assigns a newly created user as @user" do
-        post :create, {:user => valid_attributes}, valid_session
+      it "assigns a newly created user as @user" do
+        post :create, {:user => {:email=>FactoryGirl.generate(:email)}}, valid_session
         assigns(:user).should be_a(User)
         assigns(:user).should be_persisted
       end
 
-      xit "redirects to the created user" do
-        post :create, {:user => valid_attributes}, valid_session
-        response.should redirect_to(User.last)
+      it "redirects to the success page" do
+        post :create, {:user => {:email=>FactoryGirl.generate(:email)}}, valid_session
+        response.should redirect_to(create_success_user_path(User.last))
       end
     end
 

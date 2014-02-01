@@ -1,12 +1,15 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
+  sequence :email do |n|
+    "email#{n}@yopmail.com"
+  end
   factory :user do
     ignore do
       is_done true
       is_rating false
     end
-    sequence(:email) {|n| "email#{n}@yopmail.com" }
+    email
     token "MyString"
     first_name {(is_done||is_rating) ? "FirstName" : nil}
     last_name {(is_done||is_rating) ? "LastName" : nil}

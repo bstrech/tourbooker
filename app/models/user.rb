@@ -14,16 +14,16 @@ class User < ActiveRecord::Base
   validates :rating, presence: true, inclusion: { in: 1..5 }, :if=>:done?
   aasm do
     state :new, :initial => true
-    state :validating
+    state :activating
     state :registering
     state :registered
     state :done
 
-    event :validate do
-      transitions :from => :new, :to => :validating
+    event :activate do
+      transitions :from => :new, :to => :activating
     end
     event :register do
-      transitions :from => :validating, :to => :registering
+      transitions :from => :activating, :to => :registering
     end
     event :submit do
       transitions :from => :registering, :to => :registered

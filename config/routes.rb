@@ -3,7 +3,7 @@ Tourbooker::Application.routes.draw do
 
   resources :users, :only=>[:new, :create] do
     member do
-
+      get :create_success
     end
   end
   mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)

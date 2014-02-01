@@ -33,6 +33,7 @@ en:
         rating: "Experience Rating"
         aasm_state:  "State"
         aasm_state/new: "New"
+        aasm_state/activating: "Activating"
         aasm_state/registering: "Registering"
         aasm_state/registered: "Registered"
         aasm_state/done: "Done"
@@ -40,6 +41,11 @@ en:
     submit:
       create: "Go"
   views:
+    errors:
+      not_found: "Not Found"
+    success:
+      create_success: "Success! Please check your email to activate your registration."
+
     new_user:
       get_started: "Get started by entering your email"
     user_create_error:

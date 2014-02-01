@@ -62,9 +62,9 @@ describe User do
         @u.errors[:rating].should be_empty
       end
     end
-    context "when user is in the state of validating" do
+    context "when user is in the state of activating" do
       before do
-        @u = FactoryGirl.build(:user, is_done: false, aasm_state: "validating")
+        @u = FactoryGirl.build(:user, is_done: false, aasm_state: "activating")
       end
       it "should require first_name, last_name, phone" do
         @u.valid?
@@ -177,35 +177,35 @@ describe User do
         user = FactoryGirl.build(:user, is_done:false)
         user.aasm_state.should =="new"
         user.new?.should be_true
-        user.may_validate?.should be_true
+        user.may_activate?.should be_true
         user.may_register?.should be_false
         user.may_submit?.should be_false
         user.may_finish?.should be_false
 
-        user.validate
-        user.validating?.should be_true
-        user.may_validate?.should be_false
+        user.activate
+        user.activating?.should be_true
+        user.may_activate?.should be_false
         user.may_register?.should be_true
         user.may_submit?.should be_false
         user.may_finish?.should be_false
 
         user.register
         user.registering?.should be_true
-        user.may_validate?.should be_false
+        user.may_activate?.should be_false
         user.may_register?.should be_false
         user.may_submit?.should be_true
         user.may_finish?.should be_false
 
         user.submit
         user.registered?.should be_true
-        user.may_validate?.should be_false
+        user.may_activate?.should be_false
         user.may_register?.should be_false
         user.may_submit?.should be_false
         user.may_finish?.should be_true
 
         user.finish
         user.done?.should be_true
-        user.may_validate?.should be_false
+        user.may_activate?.should be_false
         user.may_register?.should be_false
         user.may_submit?.should be_false
         user.may_finish?.should be_false
