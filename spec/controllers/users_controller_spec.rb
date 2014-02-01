@@ -15,12 +15,6 @@ describe UsersController do
     end
   end
 
-  describe "GET edit" do
-    xit "assigns the requested user as @user" do
-      get :edit, {:id => user.to_param}, valid_session
-      assigns(:user).should eq(user)
-    end
-  end
 
   describe "POST create" do
     describe "with valid params of a user email that doesn't exist" do
@@ -40,20 +34,54 @@ describe UsersController do
         post :create, {:user => {:email=>FactoryGirl.generate(:email)}}, valid_session
         response.should redirect_to(create_success_user_path(User.last))
       end
-    end
 
+      it "assigns the right notice message" do
+        post :create, {:user => {:email=>FactoryGirl.generate(:email)}}, valid_session
+        request.flash[:notice].should == I18n.t("views.success.create_success")
+      end
+
+      xit "fires activate event on user" do
+        post :create, {:user => {:email=>FactoryGirl.generate(:email)}}, valid_session
+      end
+    end
+    describe "with valid params of a user email that does exist" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: false)
+      end
+      it "doesn't create a new User when the email is found" do
+        expect {
+          post :create, {:user => {:email=>@user.email}}, valid_session
+        }.not_to change(User, :count).by(1)
+      end
+
+      it "assigns the found user as @user" do
+        post :create, {:user => {:email=>@user.email}}, valid_session
+        assigns(:user).should be_a(User)
+        assigns(:user).should == @user
+      end
+
+      it "assigns the right notice message" do
+        post :create, {:user => {:email=>@user.email}}, valid_session
+        request.flash[:notice].should == I18n.t("views.success.found_success_html", :link=>resend_authorization_user_path(@user))
+      end
+
+      it "redirects to the success page" do
+        post :create, {:user => {:email=>@user.email}}, valid_session
+        response.should redirect_to(create_success_user_path(@user))
+      end
+    end
     describe "with invalid params" do
-      xit "assigns a newly created but unsaved user as @user" do
+      it "assigns a newly created but unsaved user as @user" do
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
-        post :create, {:user => { "email" => "invalid value" }}, valid_session
+        post :create, {:user => { :email => "invalid value" }}, valid_session
         assigns(:user).should be_a_new(User)
       end
 
-      xit "re-renders the 'new' template" do
+      it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
-        post :create, {:user => { "email" => "invalid value" }}, valid_session
+        post :create, {:user => { :email => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -103,5 +131,30 @@ describe UsersController do
     end
   end
 
+  describe "GET create_success" do
+    it "should redirect to root if user is not found" do
+      get :create_success, {:id=>0}, valid_session
+      response.should redirect_to(root_path())
+    end
+  end
 
+  describe "GET resend_authorization" do
+    it "should redirect to root if user is not found" do
+      get :resend_authorization, {:id=>0}, valid_session
+      response.should redirect_to(root_path())
+    end
+    context "when user is found" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: false)
+      end
+      it "should redirect to create_success if user is found" do
+        get :resend_authorization, {:id=>@user.id}, valid_session
+        response.should redirect_to(create_success_user_path(User.last))
+      end
+      it "assigns the right notice message" do
+        get :resend_authorization, {:id=>@user.id}, valid_session
+        request.flash[:notice].should == I18n.t("views.success.create_success")
+      end
+    end
+  end
 end

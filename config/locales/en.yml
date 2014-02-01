@@ -45,6 +45,7 @@ en:
       not_found: "Not Found"
     success:
       create_success: "Success! Please check your email to activate your registration."
+      found_success_html: "You have already started a registration in the past. Use the link in the email we sent you to activate your registration. Need a new email sent? <a href='%{link}'>Get a new activation email.</a>"
 
     new_user:
       get_started: "Get started by entering your email"
