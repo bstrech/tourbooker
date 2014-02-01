@@ -213,21 +213,37 @@ describe User do
     end
   end
   describe "#callbacks" do
-    it "should save emails in lowercase on create" do
-      user = User.new(:first_name=>'new', :last_name=>'user')
-      user.email = 'TestUser@MyCompany.com'
-      user.save.should be_true
-      user.reload.email.should == 'testuser@mycompany.com'
+    describe "#before_save" do
+      it "should save emails in lowercase on create" do
+        user = User.new(:first_name=>'new', :last_name=>'user')
+        user.email = 'TestUser@MyCompany.com'
+        user.save.should be_true
+        user.reload.email.should == 'testuser@mycompany.com'
+      end
+      it "should save emails in lowercase on update" do
+        user = FactoryGirl.create(:user)
+        user.new_record?.should be_false
+        user.update_attributes(:email=>'TestUser@MyCompany.com')
+        user.email.should == 'testuser@mycompany.com'
+      end
+      it "should create a token when the user is new" do
+        user = User.new(:first_name=>'new', :last_name=>'user', :email=>'TestUser@MyCompany.com')
+        user.token.should_not be_nil
+      end
     end
-    it "should save emails in lowercase on update" do
-      user = FactoryGirl.create(:user)
-      user.new_record?.should be_false
-      user.update_attributes(:email=>'TestUser@MyCompany.com')
-      user.email.should == 'testuser@mycompany.com'
+    describe "#after_create" do
+      it "should call send_create_email" do
+        user = User.new(:first_name=>'new', :last_name=>'user', :email=>'TestUser@MyCompany.com')
+        user.should_receive(:send_create_email)
+        user.save
+      end
     end
-    it "should create a token when the user is new" do
-      user = User.new(:first_name=>'new', :last_name=>'user', :email=>'TestUser@MyCompany.com')
-      user.token.should_not be_nil
+    describe "#after_update" do
+      it "should not call send_create_email" do
+        user = User.create(:first_name=>'new', :last_name=>'user', :email=>'TestUser@MyCompany.com')
+        user.should_not_receive(:send_create_email)
+        user.update_attributes(:first_name=>"update").should be_true
+      end
     end
   end
   describe "#send_create_email" do

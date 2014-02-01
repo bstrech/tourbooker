@@ -167,6 +167,11 @@ describe UsersController do
         get :resend_authorization, {:id=>@user.id, :token=>@user.token}, valid_session
         request.flash[:notice].should == I18n.t("views.success.create_success")
       end
+      it "should call send_create_email on the user" do
+        User.should_receive(:find_by_id_and_token).with(@user.id.to_s, @user.token).and_return(@user)
+        @user.should_receive(:send_create_email)
+        get :resend_authorization, {:id=>@user.id, :token=>@user.token}, valid_session
+      end
     end
   end
 end

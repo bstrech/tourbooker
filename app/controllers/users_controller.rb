@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/resend_authorization
   def resend_authorization
-    #TODO send email here
+    @user.send_create_email
     redirect_to create_success_user_path(@user, :token=>@user.token), notice: I18n.t("views.success.create_success")
   end
 

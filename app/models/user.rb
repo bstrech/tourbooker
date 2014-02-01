@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   attr_accessible :amn_doctor, :amn_movie_theater, :amn_pool, :amn_rec_room, :amn_time_machine, :email, :first_name, :last_name, :phone, :preferred_tour_date, :rating, :token
   before_validation :downcase_email
   after_initialize :generate_token
+  after_create :send_create_email
   validates :email, presence: true, uniqueness: true, format: $EMAIL_FORMAT
   validates :token, presence: true
   validates :first_name, presence: {:unless=>:new?}
