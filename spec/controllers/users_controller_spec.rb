@@ -42,9 +42,6 @@ describe UsersController do
         request.flash[:notice].should == I18n.t("views.success.create_success")
       end
 
-      xit "fires activate event on user" do
-        post :create, {:user => {:email=>FactoryGirl.generate(:email)}}, valid_session
-      end
     end
     describe "with valid params of a user email that does exist" do
       before do
@@ -206,6 +203,32 @@ describe UsersController do
         user = assigns[:user]
         user.id.should == @user.id
         user.activating?.should be_true
+      end
+    end
+  end
+  describe "GET register" do
+    it "should redirect to root if user id is not found" do
+      get :register, {:id=>0}, valid_session
+      response.should redirect_to(root_path())
+    end
+    it "should redirect to root if user is found but token doesn't match" do
+      @user = FactoryGirl.create(:user, is_done: false)
+      get :register, {:id=>@user.id, :token=>"#{@user.token}r"}, valid_session
+      response.should redirect_to(root_path())
+    end
+    context "when user is found" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: false, is_rating: true, aasm_state:"activating")
+      end
+      it "should render the activate template" do
+        get :register, {:id=>@user.id, :token=>@user.token}, valid_session
+        response.should render_template('users/register')
+      end
+      it "should assign user and aasm_state should be 'register' if it was activating" do
+        get :register, {:id=>@user.id, :token=>@user.token}, valid_session
+        user = assigns[:user]
+        user.id.should == @user.id
+        user.registering?.should be_true
       end
     end
   end

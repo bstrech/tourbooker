@@ -102,32 +102,6 @@ describe User do
         @u.errors[:rating].should be_empty
       end
     end
-    context "when user is in the state of registered" do
-      before do
-        @u = FactoryGirl.build(:user, is_done: true, aasm_state: "registered")
-      end
-      it "should require first_name, last_name, phone" do
-        @u.first_name = nil
-        @u.last_name = nil
-        @u.phone = nil
-        @u.valid?
-        @u.errors[:first_name].include?("can't be blank").should be_true
-        @u.errors[:last_name].include?("can't be blank").should be_true
-        @u.errors[:phone].include?("can't be blank").should be_true
-      end
-      it "should require preferred_tour_date, ip_address" do
-        @u.preferred_tour_date = nil
-        @u.ip_address = nil
-        @u.valid?
-        @u.errors[:preferred_tour_date].include?("can't be blank").should be_true
-        @u.errors[:ip_address].include?("can't be blank").should be_true
-      end
-      it "shouldn't require rating" do
-        @u.rating = nil
-        @u.valid?
-        @u.errors[:rating].should be_empty
-      end
-    end
     context "when user is in the state of done" do
       before do
         @u = FactoryGirl.build(:user, is_done: true)
@@ -179,35 +153,24 @@ describe User do
         user.new?.should be_true
         user.may_activate?.should be_true
         user.may_register?.should be_false
-        user.may_submit?.should be_false
         user.may_finish?.should be_false
 
         user.activate
         user.activating?.should be_true
         user.may_activate?.should be_false
         user.may_register?.should be_true
-        user.may_submit?.should be_false
         user.may_finish?.should be_false
 
         user.register
         user.registering?.should be_true
         user.may_activate?.should be_false
         user.may_register?.should be_false
-        user.may_submit?.should be_true
-        user.may_finish?.should be_false
-
-        user.submit
-        user.registered?.should be_true
-        user.may_activate?.should be_false
-        user.may_register?.should be_false
-        user.may_submit?.should be_false
         user.may_finish?.should be_true
 
         user.finish
         user.done?.should be_true
         user.may_activate?.should be_false
         user.may_register?.should be_false
-        user.may_submit?.should be_false
         user.may_finish?.should be_false
       end
     end

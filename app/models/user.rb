@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
     state :new, :initial => true
     state :activating
     state :registering
-    state :registered
     state :done
 
     event :activate do
@@ -26,11 +25,8 @@ class User < ActiveRecord::Base
     event :register do
       transitions :from => :activating, :to => :registering
     end
-    event :submit do
-      transitions :from => :registering, :to => :registered
-    end
     event :finish do
-      transitions :from => :registered, :to => :done
+      transitions :from => :registering, :to => :done
     end
   end
   def send_create_email

@@ -19,15 +19,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # PUT /users/1
-  def update
-    if @user.update_attributes(params[:user])
-      redirect_to @user, notice: 'User was successfully updated.'
-    else
-      render action: "edit"
-    end
-  end
-
   # GET /users/1/create_success
   def create_success
     #nothing to do here
@@ -38,6 +29,22 @@ class UsersController < ApplicationController
     @user.activate if @user.may_activate?
   end
 
+  # PUT /users/1/save_activation
+  def save_activation
+    @user.activate if @user.may_activate?
+
+  end
+
+  # GET /users/1/register
+  def register
+    @user.register if @user.may_register?
+
+  end
+
+  # PUT /users/1/save_registration
+  def save_registration
+    @user.register if @user.may_register?
+  end
 
   # GET /users/1/resend_activation
   def resend_activation

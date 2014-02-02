@@ -17,8 +17,14 @@ describe UsersController do
     it "routes to #activate" do
       get("/users/1/activate").should route_to("users#activate", :id=>"1")
     end
+    it "routes to #save_activation" do
+      put("/users/1/save_activation").should route_to("users#save_activation", :id=>"1")
+    end
     it "routes to #register" do
-      put("/users/1/register").should route_to("users#register", :id=>"1")
+      get("/users/1/register").should route_to("users#register", :id=>"1")
+    end
+    it "routes to #save_registration" do
+      put("/users/1/save_registration").should route_to("users#save_registration", :id=>"1")
     end
   end
 end
