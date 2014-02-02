@@ -9,6 +9,10 @@ Tourbooker::Application.routes.draw do
       put :save_activation
       get :register
       put :save_registration
+      get :registration_success
+      get :rate
+      put :save_rating
+      get :rating_success
     end
   end
   mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)

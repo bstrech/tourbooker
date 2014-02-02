@@ -26,5 +26,17 @@ describe UsersController do
     it "routes to #save_registration" do
       put("/users/1/save_registration").should route_to("users#save_registration", :id=>"1")
     end
+    it "routes to #registration_success" do
+      get("/users/1/registration_success").should route_to("users#registration_success", :id=>"1")
+    end
+    it "routes to #rate" do
+      get("/users/1/rate").should route_to("users#rate", :id=>"1")
+    end
+    it "routes to #save_rating" do
+      put("/users/1/save_rating").should route_to("users#save_rating", :id=>"1")
+    end
+    it "routes to #rating_success" do
+      get("/users/1/rating_success").should route_to("users#rating_success", :id=>"1")
+    end
   end
 end
