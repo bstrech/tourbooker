@@ -209,6 +209,9 @@ describe UsersController do
       end
     end
   end
+  describe "PUT save registration" do
+
+  end
   describe "GET register" do
     it "should redirect to root if user id is not found" do
       get :register, {:id=>0}, valid_session
@@ -235,6 +238,55 @@ describe UsersController do
       end
       xit "should redirect to rating when user state is done" do
 
+      end
+    end
+  end
+  describe "PUT save_registration" do
+
+  end
+  describe "GET registration_success" do
+    it "should redirect to root if user id is not found" do
+      get :registration_success, {:id=>0}, valid_session
+      response.should redirect_to(root_path())
+    end
+    it "should redirect to root if user is found but token doesn't match" do
+      @user = FactoryGirl.create(:user, is_done: false)
+      get :registration_success, {:id=>@user.id, :token=>"#{@user.token}r"}, valid_session
+      response.should redirect_to(root_path())
+    end
+    context "when user is found" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: true)
+      end
+      it "should render the registration_success template" do
+        get :registration_success, {:id=>@user.id, :token=>@user.token}, valid_session
+        response.should render_template('users/registration_success')
+      end
+    end
+  end
+  describe "GET rate" do
+
+  end
+  describe "PUT save_rating" do
+
+  end
+  describe "GET rating_success" do
+    it "should redirect to root if user id is not found" do
+      get :rating_success, {:id=>0}, valid_session
+      response.should redirect_to(root_path())
+    end
+    it "should redirect to root if user is found but token doesn't match" do
+      @user = FactoryGirl.create(:user, is_done: true)
+      get :rating_success, {:id=>@user.id, :token=>"#{@user.token}r"}, valid_session
+      response.should redirect_to(root_path())
+    end
+    context "when user is found" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: true)
+      end
+      it "should render the create_success template" do
+        get :rating_success, {:id=>@user.id, :token=>@user.token}, valid_session
+        response.should render_template('users/rating_success')
       end
     end
   end

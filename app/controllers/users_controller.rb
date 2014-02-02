@@ -52,6 +52,16 @@ class UsersController < ApplicationController
     redirect_to create_success_user_path(@user, :token=>@user.token), notice: I18n.t("views.success.create_success")
   end
 
+  # GET /users/1/registration_success
+  def registration_success
+    #nothing to do here
+  end
+
+  # GET /users/1/rating_success
+  def rating_success
+    #nothing to do here
+  end
+
   private
   def require_user
     @user = User.find_by_id_and_token(params[:id], params[:token])
