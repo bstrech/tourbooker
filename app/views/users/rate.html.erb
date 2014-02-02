@@ -1,0 +1,57 @@
+<h2><%=t("views.rate_user.header")%></h2>
+<div class="field">
+  <%= label :user, :email %><br />
+  <%= @user.email%>
+</div>
+<div class="field">
+  <%= label :user, :first_name %><br />
+  <%= @user.first_name%>
+</div>
+<div class="field">
+  <%= label :user, :last_name %><br />
+  <%= @user.last_name%>
+</div>
+<div class="field">
+  <%= label :user, :phone %><br />
+  <%= @user.phone%>
+</div>
+<div class="field">
+  <%= label :user, :phone %><br />
+  <%= @user.phone%>
+</div>
+<div class="field">
+  <%= label :user, :preferred_tour_date %><br />
+  <%= l(@user.preferred_tour_date)%>
+</div>
+<div class="field">
+  <label for="user_amenities"><%=t("views.amenities")%></label>
+  <ul>
+    <%= "<li>#{User.human_attribute_name(:amn_pool)}}</li>" if @user.amn_pool%>
+    <%= "<li>#{User.human_attribute_name(:amn_rec_room)}}</li>" if @user.amn_rec_room%>
+    <%= "<li>#{User.human_attribute_name(:amn_movie_theater)}}</li>" if @user.amn_movie_theater%>
+    <%= "<li>#{User.human_attribute_name(:amn_doctor)}}</li>" if @user.amn_doctor%>
+    <%= "<li>#{User.human_attribute_name(:amn_time_machine)}}</li>" if @user.amn_time_machine%>
+  </ul>
+</div>
+<%= form_for(@user,:url=>save_rating_user_path(@user.id, :token=>@user.token), :method => :put, :html=>{:class=>"form"}) do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h4><%= t("views.user_update_error", :count=>@user.errors.count) %></h4>
+
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <h2 class="form-signin-heading"><%=t("views.rate_user.form_intro")%></h2>
+
+    <div class="field">
+      <%= f.label :rating %><br />
+      <%= f.select :rating, 1..5, {:class=>"form-control required", :include_blank=>true }%>
+    </div>
+    <div class="actions">
+      <%= f.submit(:value=>t("helpers.submit.save_rating"),:class=>"btn btn-lg btn-primary btn-block") %>
+    </div>
+<% end %>

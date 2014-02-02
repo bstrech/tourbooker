@@ -42,6 +42,7 @@ en:
       create: "Go"
       save_activation: "Save and Go to Next Step"
       save_registration: "Finish Registration"
+      save_rating: "Submit"
   action_mailer:
     activate_user:
       subject: "Tourbooker Registration Request"
@@ -50,6 +51,7 @@ en:
         To complete your registration please follow this link:
         %{link}
   views:
+    amenities: "Requested Amenities"
     errors:
       not_found: "Not Found"
       oops_html: "Oops! Looks like you came here directly. <a href='/'>Go to home.</a>"
@@ -65,6 +67,9 @@ en:
     register_user:
       intro: "Almost done. Provide us with your tour preferences."
       date_prompt: "YYYY/MM/DD"
+    rate_user:
+      header: "Your Scheduled Tour Details"
+      form_intro: "Please rate your tour experience"
     user_create_error:
       one: "Couldn't register for a tour due to the following error"
       other: "Couldn't register for a tour due to the following errors"
