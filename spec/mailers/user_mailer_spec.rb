@@ -13,7 +13,7 @@ describe UserMailer do
     # Test the body of the sent email contains what we expect it to
     email.from.should == ["donotreply@example.com"]
     email.to.should == [@user.email]
-    email.subject.should == I18n.t("actionmailer.authorize_user.subject")
+    email.subject.should == I18n.t("actionmailer.activate_user.subject")
     end
   end
 end

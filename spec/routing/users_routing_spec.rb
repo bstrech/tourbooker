@@ -11,11 +11,11 @@ describe UsersController do
     it "routes to #create_success" do
       get("/users/1/create_success").should route_to("users#create_success", :id=>"1")
     end
-    it "routes to #resend_authorization" do
-      get("/users/1/resend_authorization").should route_to("users#resend_authorization", :id=>"1")
+    it "routes to #resend_activation" do
+      get("/users/1/resend_activation").should route_to("users#resend_activation", :id=>"1")
     end
-    it "routes to #authorize" do
-      get("/users/1/authorize").should route_to("users#authorize", :id=>"1")
+    it "routes to #activate" do
+      get("/users/1/activate").should route_to("users#activate", :id=>"1")
     end
   end
 end

@@ -64,7 +64,7 @@ describe UsersController do
 
       it "assigns the right notice message" do
         post :create, {:user => {:email=>@user.email}}, valid_session
-        request.flash[:notice].should == I18n.t("views.success.found_success_html", :link=>resend_authorization_user_path(@user, :token=>@user.token))
+        request.flash[:notice].should == I18n.t("views.success.found_success_html", :link=>resend_activation_user_path(@user, :token=>@user.token))
       end
 
       it "redirects to the success page" do
@@ -143,16 +143,25 @@ describe UsersController do
       get :create_success, {:id=>@user.id, :token=>"#{@user.token}r"}, valid_session
       response.should redirect_to(root_path())
     end
+    context "when user is found" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: false)
+      end
+      it "should render the create_success template" do
+        get :create_success, {:id=>@user.id, :token=>@user.token}, valid_session
+        response.should render_template('users/create_success')
+      end
+    end
   end
 
-  describe "GET resend_authorization" do
+  describe "GET resend_activation" do
     it "should redirect to root if user is not found" do
-      get :resend_authorization, {:id=>0}, valid_session
+      get :resend_activation, {:id=>0}, valid_session
       response.should redirect_to(root_path())
     end
     it "should redirect to root if user is found but token doesn't match" do
       @user = FactoryGirl.create(:user, is_done: false)
-      get :resend_authorization, {:id=>@user.id, :token=>"#{@user.token}r"}, valid_session
+      get :resend_activation, {:id=>@user.id, :token=>"#{@user.token}r"}, valid_session
       response.should redirect_to(root_path())
     end
     context "when user is found" do
@@ -160,17 +169,43 @@ describe UsersController do
         @user = FactoryGirl.create(:user, is_done: false)
       end
       it "should redirect to create_success if user is found" do
-        get :resend_authorization, {:id=>@user.id, :token=>@user.token}, valid_session
+        get :resend_activation, {:id=>@user.id, :token=>@user.token}, valid_session
         response.should redirect_to(create_success_user_path(@user, :token=>@user.token))
       end
       it "assigns the right notice message" do
-        get :resend_authorization, {:id=>@user.id, :token=>@user.token}, valid_session
+        get :resend_activation, {:id=>@user.id, :token=>@user.token}, valid_session
         request.flash[:notice].should == I18n.t("views.success.create_success")
       end
       it "should call send_create_email on the user" do
         User.should_receive(:find_by_id_and_token).with(@user.id.to_s, @user.token).and_return(@user)
         @user.should_receive(:send_create_email)
-        get :resend_authorization, {:id=>@user.id, :token=>@user.token}, valid_session
+        get :resend_activation, {:id=>@user.id, :token=>@user.token}, valid_session
+      end
+    end
+  end
+  describe "GET activate" do
+    it "should redirect to root if user id is not found" do
+      get :activate, {:id=>0}, valid_session
+      response.should redirect_to(root_path())
+    end
+    it "should redirect to root if user is found but token doesn't match" do
+      @user = FactoryGirl.create(:user, is_done: false)
+      get :activate, {:id=>@user.id, :token=>"#{@user.token}r"}, valid_session
+      response.should redirect_to(root_path())
+    end
+    context "when user is found" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: false)
+      end
+      it "should render the activate template" do
+        get :activate, {:id=>@user.id, :token=>@user.token}, valid_session
+        response.should render_template('users/activate')
+      end
+      it "should assign user and aasm_state should be 'activate'" do
+        get :activate, {:id=>@user.id, :token=>@user.token}, valid_session
+        user = assigns[:user]
+        user.id.should == @user.id
+        user.activating?.should be_true
       end
     end
   end
