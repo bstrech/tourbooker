@@ -265,7 +265,51 @@ describe UsersController do
     end
   end
   describe "GET rate" do
-
+    it "should redirect to root if user id is not found" do
+      get :rate, {:id=>0}, valid_session
+      response.should redirect_to(root_path())
+    end
+    it "should redirect to root if user is found but token doesn't match" do
+      @user = FactoryGirl.create(:user, is_done: false)
+      get :rate, {:id=>@user.id, :token=>"#{@user.token}r"}, valid_session
+      response.should redirect_to(root_path())
+    end
+    context "when user is found and is in state of new" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: false)
+      end
+      it "should redirect to activate" do
+        get :rate, {:id=>@user.id, :token=>@user.token}, valid_session
+        response.should redirect_to(activate_user_path(@user, :token=>@user.token))
+      end
+    end
+    context "when user is found and is in state of activating" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: false, is_rating: true, aasm_state: "activating")
+      end
+      it "should redirect to activate" do
+        get :rate, {:id=>@user.id, :token=>@user.token}, valid_session
+        response.should redirect_to(activate_user_path(@user, :token=>@user.token))
+      end
+    end
+    context "when user is found and is in state of registering" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: false, is_rating: true, aasm_state: "registering")
+      end
+      it "should redirect to activate" do
+        get :rate, {:id=>@user.id, :token=>@user.token}, valid_session
+        response.should redirect_to(activate_user_path(@user, :token=>@user.token))
+      end
+    end
+    context "when user is found and is in state of done" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: true)
+      end
+      it "should render the rate template" do
+        get :rate, {:id=>@user.id, :token=>@user.token}, valid_session
+        response.should render_template('users/rate')
+      end
+    end
   end
   describe "PUT save_rating" do
 

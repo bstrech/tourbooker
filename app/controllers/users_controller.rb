@@ -57,6 +57,11 @@ class UsersController < ApplicationController
     #nothing to do here
   end
 
+  # GET /users/1/rate
+  def rate
+    redirect_to(activate_user_path(@user, :token=>@user.token)) and return unless @user.done?
+  end
+
   # GET /users/1/rating_success
   def rating_success
     #nothing to do here
