@@ -1,2 +1,42 @@
-<%= form_for(@user,:url=>save_registration_user_path(@user), :method => :put, :html=>{:class=>"form-signin"}) do |f| %>
+<%= form_for(@user,:url=>save_registration_user_path(@user.id, :token=>@user.token), :method => :put, :html=>{:class=>"form"}) do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h4><%= t("views.user_update_error", :count=>@user.errors.count) %></h4>
+
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <h2 class="form-signin-heading"><%=t("views.register_user.intro")%></h2>
+
+    <div class="field">
+      <%= f.label :preferred_tour_date %><br />
+      <%= f.text_field :preferred_tour_date, :class=>"form-control required datepicker", :placeholder=>t("views.register_user.date_prompt") %>
+    </div>
+    <div class="field">
+      <%= f.label :amn_pool %>
+      <%= f.check_box :amn_pool %>
+    </div>
+    <div class="field">
+      <%= f.label :amn_rec_room %>
+      <%= f.check_box :amn_rec_room %>
+    </div>
+    <div class="field">
+      <%= f.label :amn_movie_theater %>
+      <%= f.check_box :amn_movie_theater %>
+    </div>
+    <div class="field">
+      <%= f.label :amn_doctor %>
+      <%= f.check_box :amn_doctor %>
+    </div>
+    <div class="field">
+      <%= f.label :amn_time_machine %>
+      <%= f.check_box :amn_time_machine %>
+    </div>
+    <div class="actions">
+      <%= f.submit(:value=>t("helpers.submit.save_registration"),:class=>"btn btn-lg btn-primary btn-block") %>
+    </div>
 <% end %>

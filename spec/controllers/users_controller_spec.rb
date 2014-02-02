@@ -204,6 +204,9 @@ describe UsersController do
         user.id.should == @user.id
         user.activating?.should be_true
       end
+      xit "should redirect to rating when user state is done" do
+
+      end
     end
   end
   describe "GET register" do
@@ -229,6 +232,9 @@ describe UsersController do
         user = assigns[:user]
         user.id.should == @user.id
         user.registering?.should be_true
+      end
+      xit "should redirect to rating when user state is done" do
+
       end
     end
   end

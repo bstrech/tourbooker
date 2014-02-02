@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap3.1.0
+//= require bootstrap-datepicker
 //= require jquery.validate
 //= require_tree .

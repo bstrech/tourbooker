@@ -40,6 +40,8 @@ en:
   helpers:
     submit:
       create: "Go"
+      save_activation: "Save and Go to Next Step"
+      save_registration: "Finish Registration"
   action_mailer:
     activate_user:
       subject: "Tourbooker Registration Request"
@@ -54,10 +56,17 @@ en:
     success:
       create_success: "Success! Please check your email to activate your registration."
       found_success_html: "You have already started a registration in the past. Use the link in the email we sent you to activate your registration. Need a new email sent? <a href='%{link}'>Get a new activation email.</a>"
-
     new_user:
       get_started: "Get started by entering your email"
+    activate_user:
+      intro: "Provide the following information to book your tour."
+    register_user:
+      intro: "Almost done. Provide us with your tour preferences."
+      date_prompt: "YYYY/MM/DD"
     user_create_error:
       one: "Couldn't register for a tour due to the following error"
       other: "Couldn't register for a tour due to the following errors"
+    user_update_error:
+      one: "Couldn't save due to the following error"
+      other: "Couldn't save due to the following errors"
 
