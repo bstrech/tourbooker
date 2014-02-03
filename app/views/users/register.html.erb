@@ -17,6 +17,9 @@
       <%= f.text_field :preferred_tour_date, :class=>"form-control required datepicker", :placeholder=>t("views.register_user.date_prompt") %>
     </div>
     <div class="field">
+      <label for="user_amenities"><%=t("views.amenities")%></label>
+    </div>
+    <div class="field">
       <%= f.label :amn_pool %>
       <%= f.check_box :amn_pool %>
     </div>
