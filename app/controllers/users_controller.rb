@@ -48,7 +48,15 @@ class UsersController < ApplicationController
 
   # PUT /users/1/save_registration
   def save_registration
-    @user.register if @user.may_register?
+    redirect_to(activate_user_path(@user, :token=>@user.token)) and return if @user.new?
+    safe_user_attributes = params[:user].slice(:preferred_tour_date, :amn_pool, :amn_doctor, :amn_movie_theater, :amn_pool, :amn_rec_room, :amn_time_machine)
+    safe_user_attributes.merge!(:aasm_state=>"registering")
+    if @user.update_attributes(safe_user_attributes)
+      #update user to done now and send emails.
+      redirect_to(registration_success_user_path(@user, :token=>@user.token))
+    else
+      render action: "register"
+    end
   end
 
   # GET /users/1/resend_activation
@@ -60,7 +68,6 @@ class UsersController < ApplicationController
   # GET /users/1/registration_success
   def registration_success
     redirect_to(activate_user_path(@user, :token=>@user.token)) and return unless @user.done?
-    #nothing to do here
   end
 
   # GET /users/1/rate

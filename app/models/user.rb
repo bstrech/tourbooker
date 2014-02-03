@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include AASM
   strip_attributes
-  attr_accessible :amn_doctor, :amn_movie_theater, :amn_pool, :amn_rec_room, :amn_time_machine, :email, :first_name, :last_name, :phone, :preferred_tour_date, :rating, :token, :aasm_state
+  attr_accessible :amn_doctor, :amn_movie_theater, :amn_pool, :amn_rec_room, :amn_time_machine, :email, :first_name, :last_name, :phone, :preferred_tour_date, :rating, :token, :aasm_state, :ip_address
   before_validation :downcase_email
   after_initialize :generate_token
   after_create :send_create_email
