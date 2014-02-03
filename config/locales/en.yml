@@ -41,15 +41,20 @@ en:
     submit:
       create: "Go"
       save_activation: "Save and Go to Next Step"
-      save_registration: "Finish Registration"
+      save_registration: "Schedule Tour"
       save_rating: "Submit"
   action_mailer:
     activate_user:
-      subject: "Tourbooker Registration Request"
-      line_1: "Thank you for signing up at Tourbooker."
+      subject: "TourBooker Registration Request"
+      line_1: "Thank you for signing up at TourBooker."
       line_2: |
         To complete your registration please follow this link:
         %{link}
+    tour_scheduled_confirmation:
+       subject: "TourBooker Tour Scheduled"
+       line_1: "Thank you. Your tour is now scheduled"
+    new_tour_scheduled:
+       subject: "New Tour Scheduled"
   views:
     amenities: "Requested Amenities"
     errors:

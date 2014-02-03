@@ -50,11 +50,11 @@ class UsersController < ApplicationController
   def save_registration
     redirect_to(activate_user_path(@user, :token=>@user.token)) and return if @user.new?
     safe_user_attributes = params[:user].slice(:preferred_tour_date, :amn_pool, :amn_doctor, :amn_movie_theater, :amn_pool, :amn_rec_room, :amn_time_machine)
-    safe_user_attributes.merge!(:aasm_state=>"registering")
+    safe_user_attributes.merge!(:aasm_state=>"done", :ip_address=>request.remote_ip)
     if @user.update_attributes(safe_user_attributes)
-      #update user to done now and send emails.
       redirect_to(registration_success_user_path(@user, :token=>@user.token))
     else
+      @user.aasm_state = "registering"
       render action: "register"
     end
   end

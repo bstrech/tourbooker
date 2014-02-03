@@ -122,10 +122,10 @@ describe User do
         @u.errors[:preferred_tour_date].include?("can't be blank").should be_true
         @u.errors[:ip_address].include?("can't be blank").should be_true
       end
-      it "should require rating" do
+      it "shouldn't require rating" do
         @u.rating = nil
         @u.valid?
-        @u.errors[:rating].include?("can't be blank").should be_true
+        @u.errors[:rating].include?("can't be blank").should be_false
       end
       it "should require rating is in the right range" do
         (0..6).each do |n|
@@ -207,6 +207,74 @@ describe User do
         user.should_not_receive(:send_create_email)
         user.update_attributes(:first_name=>"update").should be_true
       end
+    end
+    describe "#after_save" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: true, aasm_state: "new")
+      end
+      context "when aasm_state doesn't change and the state is done" do
+        before do
+          @user.update_attributes(:aasm_state=>"done").should be_true
+        end
+        it "shouldn't call send_tour_scheduled and new_tour_scheduled " do
+           @user.should_not_receive(:send_tour_scheduled)
+           @user.should_not_receive(:send_new_tour_scheduled)
+           @user.update_attributes(:first_name=>"new_name").should be_true
+        end
+      end
+      context "when aasm_state changes and the new state is new" do
+        it "shouldn't call send_tour_scheduled and new_tour_scheduled " do
+          @user = FactoryGirl.build(:user, is_done: true, aasm_state: "new")
+          @user.should_not_receive(:send_tour_scheduled)
+          @user.should_not_receive(:send_new_tour_scheduled)
+          @user.save.should be_true
+        end
+      end
+      context "when aasm_state changes and the new state is activating" do
+        it "shouldn't call send_tour_scheduled and new_tour_scheduled " do
+          @user.should_not_receive(:send_tour_scheduled)
+          @user.should_not_receive(:send_new_tour_scheduled)
+          @user.update_attributes(:first_name=>"new_name", :aasm_state=>"activating").should be_true
+        end
+      end
+      context "when aasm_state changes and the new state is registering" do
+        it "shouldn't call send_tour_scheduled and new_tour_scheduled " do
+          @user.should_not_receive(:send_tour_scheduled)
+          @user.should_not_receive(:send_new_tour_scheduled)
+          @user.update_attributes(:first_name=>"new_name", :aasm_state=>"registering").should be_true
+        end
+      end
+      context "when aasm_state changes and the new state is done" do
+        it "should call send_tour_scheduled and new_tour_scheduled " do
+          @user.should_receive(:send_tour_scheduled)
+          @user.should_receive(:send_new_tour_scheduled)
+          @user.update_attributes(:first_name=>"new_name", :aasm_state=>"done").should be_true
+        end
+      end
+    end
+  end
+  describe "#send_tour_scheduled" do
+    before do
+      @user = FactoryGirl.create(:user, is_done: true)
+    end
+    it "should deliver the tour_schedule_confirmation" do
+      @user.send_tour_scheduled
+      email = ActionMailer::Base.deliveries.last
+      email.from.should == ["donotreply@example.com"]
+      email.to.should == [@user.email]
+      email.subject.should == I18n.t("actionmailer.tour_scheduled_confirmation.subject")
+    end
+  end
+  describe "#send_new_tour_scheduled" do
+    before do
+      @user = FactoryGirl.create(:user, is_done: true)
+    end
+    it "should deliver the new_tour_scheduled" do
+      @user.send_new_tour_scheduled
+      email = ActionMailer::Base.deliveries.last
+      email.from.should == ["donotreply@example.com"]
+      email.to.should == ["tours@example.com"]
+      email.subject.should == I18n.t("actionmailer.new_tour_scheduled.subject")
     end
   end
   describe "#send_create_email" do

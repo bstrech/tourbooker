@@ -451,12 +451,19 @@ describe UsersController do
         @user = FactoryGirl.create(:user, is_done: false, is_rating: true, aasm_state: "activating")
       end
       describe "with valid params" do
-        it "should assign user with state of registering" do
+        it "should assign user with state of done" do
           put :save_registration, {:id=>@user.id, :token=>@user.token, :user=>@valid_user_params}, valid_session
           user = assigns[:user]
           user.id.should == @user.id
-          user.registering?.should be_true
+          user.done?.should be_true
         end
+
+        it "should set ip_address" do
+          put :save_registration, {:id=>@user.id, :user=>@valid_user_params, :token=>@user.token}, valid_session
+          user = assigns[:user]
+          user.ip_address.should_not be_nil
+        end
+
         it "updates the requested user" do
           put :save_registration, {:id=>@user.id, :user=>@valid_user_params, :token=>@user.token}, valid_session
           user = assigns[:user]
@@ -491,9 +498,6 @@ describe UsersController do
         it "assigns the requested user as @user" do
           put :save_registration, {:id=>@user.id, :user=>@valid_user_params, :token=>@user.token}, valid_session
           assigns(:user).should eq(@user)
-        end
-        it "sends tour_scheduled email and sets the user to done" do
-
         end
         it "redirects to the registration_success_user_path" do
           put :save_registration, {:id=>@user.id, :user=>@valid_user_params, :token=>@user.token}, valid_session
@@ -522,11 +526,11 @@ describe UsersController do
         @user = FactoryGirl.create(:user, is_done: false, is_rating: true, aasm_state: "registering")
       end
       describe "with valid params" do
-        it "should assign user with state of registering" do
+        it "should assign user with state of done" do
           put :save_registration, {:id=>@user.id, :token=>@user.token, :user=>@valid_user_params}, valid_session
           user = assigns[:user]
           user.id.should == @user.id
-          user.registering?.should be_true
+          user.done?.should be_true
         end
         it "updates the requested user" do
           put :save_registration, {:id=>@user.id, :user=>@valid_user_params, :token=>@user.token}, valid_session
@@ -571,10 +575,13 @@ describe UsersController do
       end
       describe "with invalid params" do
         before do
-          @invalid_user_params = {:first_name=>"", :last_name=>"", :phone=>""}
+          @invalid_user_params = {:preferred_tour_date=>""}
         end
-        it "assigns user as @user" do
+        it "assigns user as @user in registering state" do
           put :save_registration, {:id=>@user.id, :token=>@user.token, :user=>@invalid_user_params}, valid_session
+          assigns(:user).should eq(@user)
+          user = assigns[:user]
+          user.registering?.should be_true
         end
         it "re-renders the register template'" do
           User.any_instance.stub(:save).and_return(false)

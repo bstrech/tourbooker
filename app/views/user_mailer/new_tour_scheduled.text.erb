@@ -1,0 +1,35 @@
+<%=I18n.t("action_mailer.new_tour_scheduled.subject")%>
+===============================================
+
+<%=User.human_attribute_name(:email)%>
+<%= @user.email %>
+
+<%=User.human_attribute_name(:first_name)%>
+<%= @user.first_name %>
+
+<%=User.human_attribute_name(:last_name)%>
+<%= @user.last_name %>
+
+<%=User.human_attribute_name(:phone)%>
+<%= @user.phone %>
+
+<%=User.human_attribute_name(:ip_address)%>
+<%= @user.ip_address %>
+
+<%=User.human_attribute_name(:preferred_tour_date)%>
+<%= l(@user.preferred_tour_date) %>
+
+<%=User.human_attribute_name(:amn_pool)%>
+<%= @user.amn_pool %>
+
+<%=User.human_attribute_name(:amn_rec_room)%>
+<%= @user.amn_rec_room %>
+
+<%=User.human_attribute_name(:amn_movie_theater)%>
+<%= @user.amn_movie_theater %>
+
+<%=User.human_attribute_name(:amn_doctor)%>
+<%= @user.amn_doctor %>
+
+<%=User.human_attribute_name(:amn_time_machine)%>
+<%= @user.amn_time_machine %>

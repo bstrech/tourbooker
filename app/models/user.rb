@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   before_validation :downcase_email
   after_initialize :generate_token
   after_create :send_create_email
+  after_save :check_user_is_done
   validates :email, presence: true, uniqueness: true, format: $EMAIL_FORMAT
   validates :token, presence: true
   validates :first_name, presence: {:unless=>:new?}
@@ -12,7 +13,7 @@ class User < ActiveRecord::Base
   validates :phone, presence: {:unless=>:new?}
   validates :preferred_tour_date, presence: {:if=>:past_step_2}
   validates :ip_address, presence: {:if=>:past_step_2}
-  validates :rating, presence: true, inclusion: { in: 1..5 }, :if=>:done?
+  validates :rating, inclusion: { in: 1..5, allow_nil: true }
   aasm do
     state :new, :initial => true
     state :activating
@@ -29,13 +30,31 @@ class User < ActiveRecord::Base
       transitions :from => :registering, :to => :done
     end
   end
+
   def send_create_email
     UserMailer.create_user(self).deliver if !self.new_record?
   end
+
+  def send_tour_scheduled
+    UserMailer.tour_scheduled_confirmation(self).deliver if self.done?
+  end
+
+  def send_new_tour_scheduled
+    UserMailer.new_tour_scheduled(self).deliver if self.done?
+  end
+
   private
   def downcase_email
     self.email.downcase! if email
   end
+
+  def  check_user_is_done
+    if self.aasm_state_changed? && self.done?
+      self.send_tour_scheduled
+      self.send_new_tour_scheduled
+    end
+  end
+
   def generate_token
     self.token = SecureRandom.base64(15).tr('+/=', 'xyz')  if self.token.blank?
   end
