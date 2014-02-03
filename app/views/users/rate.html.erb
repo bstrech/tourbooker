@@ -33,6 +33,7 @@
     <%= "<li>#{User.human_attribute_name(:amn_time_machine)}}</li>".html_safe if @user.amn_time_machine%>
   </ul>
 </div>
+<hr/>
 <%= form_for(@user,:url=>save_rating_user_path(@user.id, :token=>@user.token), :method => :put, :html=>{:class=>"form"}) do |f| %>
     <% if @user.errors.any? %>
         <div id="error_explanation">

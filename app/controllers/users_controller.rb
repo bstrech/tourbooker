@@ -59,6 +59,17 @@ class UsersController < ApplicationController
     end
   end
 
+  # PUT /users/1/save_rating
+  def save_rating
+    redirect_to(activate_user_path(@user, :token=>@user.token)) and return unless @user.done?
+    safe_user_attributes = params[:user].slice(:rating)
+    if @user.update_attributes(safe_user_attributes)
+      redirect_to(rating_success_user_path(@user, :token=>@user.token))
+    else
+      render action: "rate"
+    end
+  end
+
   # GET /users/1/resend_activation
   def resend_activation
     @user.send_create_email
