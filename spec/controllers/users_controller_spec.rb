@@ -86,50 +86,6 @@ describe UsersController do
     end
   end
 
-  describe "PUT update" do
-    describe "with valid params" do
-      xit "updates the requested user" do
-        user = User.create! valid_attributes
-        # Assuming there are no other users in the database, this
-        # specifies that the User created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        User.any_instance.should_receive(:update_attributes).with({ "email" => "MyString" })
-        put :update, {:id => user.to_param, :user => { "email" => "MyString" }}, valid_session
-      end
-
-      xit "assigns the requested user as @user" do
-        user = User.create! valid_attributes
-        put :update, {:id => user.to_param, :user => valid_attributes}, valid_session
-        assigns(:user).should eq(user)
-      end
-
-      xit "redirects to the user" do
-        user = User.create! valid_attributes
-        put :update, {:id => user.to_param, :user => valid_attributes}, valid_session
-        response.should redirect_to(user)
-      end
-    end
-
-    describe "with invalid params" do
-      xit "assigns the user as @user" do
-        user = User.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        User.any_instance.stub(:save).and_return(false)
-        put :update, {:id => user.to_param, :user => { "email" => "invalid value" }}, valid_session
-        assigns(:user).should eq(user)
-      end
-
-      xit "re-renders the 'edit' template" do
-        user = User.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        User.any_instance.stub(:save).and_return(false)
-        put :update, {:id => user.to_param, :user => { "email" => "invalid value" }}, valid_session
-        response.should render_template("edit")
-      end
-    end
-  end
-
   describe "GET create_success" do
     it "should redirect to root if user id is not found" do
       get :create_success, {:id=>0}, valid_session
@@ -190,7 +146,7 @@ describe UsersController do
       get :activate, {:id=>@user.id, :token=>"#{@user.token}r"}, valid_session
       response.should redirect_to(root_path())
     end
-    context "when user is found" do
+    context "when user is found and is new" do
       before do
         @user = FactoryGirl.create(:user, is_done: false)
       end
@@ -204,13 +160,214 @@ describe UsersController do
         user.id.should == @user.id
         user.activating?.should be_true
       end
-      xit "should redirect to rating when user state is done" do
-
+    end
+    context "when user is found and in state of done" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: true)
+      end
+      it "should redirect to rate" do
+        get :activate, {:id=>@user.id, :token=>@user.token}, valid_session
+        response.should redirect_to(rate_user_path(@user, :token=>@user.token))
       end
     end
   end
-  describe "PUT save registration" do
+  describe "PUT save_activation" do
+    before do
+      @valid_user_params = {:first_name=>"Joe", :last_name=>"User", :phone=>"1-800-867-5309"}
+    end
+    it "should redirect to root if user id is not found" do
+      put :save_activation, {:id=>0, :user=>@valid_user_params}, valid_session
+      response.should redirect_to(root_path())
+    end
+    it "should redirect to root if user is found but token doesn't match" do
+      @user = FactoryGirl.create(:user, is_done: false)
+      put :save_activation, {:id=>@user.id, :token=>"#{@user.token}r", :user=>@valid_user_params}, valid_session
+      response.should redirect_to(root_path())
+    end
+    context "when user is found and is in state of new" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: false)
+      end
+      describe "with valid params" do
+        it "should assign user with state of activating" do
+          put :save_activation, {:id=>@user.id, :token=>@user.token, :user=>@valid_user_params}, valid_session
+          user = assigns[:user]
+          user.id.should == @user.id
+          user.activating?.should be_true
+        end
+        it "updates the requested user" do
+          put :save_activation, {:id=>@user.id, :user=>@valid_user_params, :token=>@user.token}, valid_session
+          user = assigns[:user]
+          @user.reload
+          @user.should == user
+          @valid_user_params.each do |k,v|
+            @user[k].should == v
+          end
+        end
+        it "strips other attributes which are not expected" do
+          @user_attributes = @valid_user_params.merge!(token: "new_token", email: 'new@example.com', ip_address: "new_ip", preferred_tour_date: "2014-02-30", amn_pool: true, amn_rec_room:true, amn_movie_theater: true, amn_doctor: true, amn_time_machine: true, rating: 5)
+          put :save_activation, {:id=>@user.id, :user=>@user_attributes, :token=>@user.token}, valid_session
+          user = assigns[:user]
+          @user.reload
+          @user.should == user
+          @user_attributes.each do |k,v|
+            if ([:first_name, :last_name, :phone].include?(k))
+              @user[k].should == v
+            else
+              @user[k].should_not == v
+            end
+          end
+        end
+        it "assigns the requested user as @user" do
+          put :save_activation, {:id=>@user.id, :user=>@valid_user_params, :token=>@user.token}, valid_session
+          assigns(:user).should eq(@user)
+        end
 
+        it "redirects to the user" do
+          put :save_activation, {:id=>@user.id, :user=>@valid_user_params, :token=>@user.token}, valid_session
+          response.should redirect_to(register_user_path(@user, :token=>@user.token))
+        end
+      end
+      describe "with invalid params" do
+        before do
+          @invalid_user_params = {:first_name=>"", :last_name=>"", :phone=>""}
+        end
+        it "assigns user as @user" do
+          put :save_activation, {:id=>@user.id, :token=>@user.token, :user=>@invalid_user_params}, valid_session
+        end
+        it "re-renders the activate template'" do
+          User.any_instance.stub(:save).and_return(false)
+          put :save_activation, {:id=>@user.id, :token=>@user.token, :user=>@invalid_user_params}, valid_session
+          response.should render_template("users/activate")
+        end
+      end
+    end
+    context "when user is found and is in state of activating" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: false, is_rating: true, aasm_state: "activating")
+      end
+      describe "with valid params" do
+        it "should assign user with state of activating" do
+          put :save_activation, {:id=>@user.id, :token=>@user.token, :user=>@valid_user_params}, valid_session
+          user = assigns[:user]
+          user.id.should == @user.id
+          user.activating?.should be_true
+        end
+        it "updates the requested user" do
+          put :save_activation, {:id=>@user.id, :user=>@valid_user_params, :token=>@user.token}, valid_session
+          user = assigns[:user]
+          @user.reload
+          @user.should == user
+          @valid_user_params.each do |k,v|
+            @user[k].should == v
+          end
+        end
+        it "strips other attributes which are not expected" do
+          @user_attributes = @valid_user_params.merge!(token: "new_token", email: 'new@example.com', ip_address: "new_ip", preferred_tour_date: "2014-02-30", amn_pool: true, amn_rec_room:true, amn_movie_theater: true, amn_doctor: true, amn_time_machine: true, rating: 5)
+          put :save_activation, {:id=>@user.id, :user=>@user_attributes, :token=>@user.token}, valid_session
+          user = assigns[:user]
+          @user.reload
+          @user.should == user
+          @user_attributes.each do |k,v|
+            if ([:first_name, :last_name, :phone].include?(k))
+              @user[k].should == v
+            else
+              @user[k].should_not == v
+            end
+          end
+        end
+        it "assigns the requested user as @user" do
+          put :save_activation, {:id=>@user.id, :user=>@valid_user_params, :token=>@user.token}, valid_session
+          assigns(:user).should eq(@user)
+        end
+
+        it "redirects to the user" do
+          put :save_activation, {:id=>@user.id, :user=>@valid_user_params, :token=>@user.token}, valid_session
+          response.should redirect_to(register_user_path(@user, :token=>@user.token))
+        end
+      end
+      describe "with invalid params" do
+        before do
+          @invalid_user_params = {:first_name=>"", :last_name=>"", :phone=>""}
+        end
+        it "assigns user as @user" do
+          put :save_activation, {:id=>@user.id, :token=>@user.token, :user=>@invalid_user_params}, valid_session
+        end
+        it "re-renders the activate template'" do
+          User.any_instance.stub(:save).and_return(false)
+          put :save_activation, {:id=>@user.id, :token=>@user.token, :user=>@invalid_user_params}, valid_session
+          response.should render_template("users/activate")
+        end
+      end
+    end
+    context "when user is found and is in state of registering" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: false, is_rating: true, aasm_state: "registering")
+      end
+      describe "with valid params" do
+        it "should assign user with state of activating" do
+          put :save_activation, {:id=>@user.id, :token=>@user.token, :user=>@valid_user_params}, valid_session
+          user = assigns[:user]
+          user.id.should == @user.id
+          user.activating?.should be_true
+        end
+        it "updates the requested user" do
+          put :save_activation, {:id=>@user.id, :user=>@valid_user_params, :token=>@user.token}, valid_session
+          user = assigns[:user]
+          @user.reload
+          @user.should == user
+          @valid_user_params.each do |k,v|
+            @user[k].should == v
+          end
+        end
+        it "strips other attributes which are not expected" do
+          @user_attributes = @valid_user_params.merge!(token: "new_token", email: 'new@example.com', ip_address: "new_ip", preferred_tour_date: "2014-02-30", amn_pool: true, amn_rec_room:true, amn_movie_theater: true, amn_doctor: true, amn_time_machine: true, rating: 5)
+          put :save_activation, {:id=>@user.id, :user=>@user_attributes, :token=>@user.token}, valid_session
+          user = assigns[:user]
+          @user.reload
+          @user.should == user
+          @user_attributes.each do |k,v|
+            if ([:first_name, :last_name, :phone].include?(k))
+              @user[k].should == v
+            else
+              @user[k].should_not == v
+            end
+          end
+        end
+        it "assigns the requested user as @user" do
+          put :save_activation, {:id=>@user.id, :user=>@valid_user_params, :token=>@user.token}, valid_session
+          assigns(:user).should eq(@user)
+        end
+
+        it "redirects to the user" do
+          put :save_activation, {:id=>@user.id, :user=>@valid_user_params, :token=>@user.token}, valid_session
+          response.should redirect_to(register_user_path(@user, :token=>@user.token))
+        end
+      end
+      describe "with invalid params" do
+        before do
+          @invalid_user_params = {:first_name=>"", :last_name=>"", :phone=>""}
+        end
+        it "assigns user as @user" do
+          put :save_activation, {:id=>@user.id, :token=>@user.token, :user=>@invalid_user_params}, valid_session
+        end
+        it "re-renders the activate template'" do
+          User.any_instance.stub(:save).and_return(false)
+          put :save_activation, {:id=>@user.id, :token=>@user.token, :user=>@invalid_user_params}, valid_session
+          response.should render_template("users/activate")
+        end
+      end
+    end
+    context "when user is found and in state of done" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: true)
+      end
+      it "should redirect to rate" do
+        User.any_instance.should_not_receive(:save)
+        put :save_registration, {:id=>@user.id, :token=>@user.token, :user=>@valid_user_params}, valid_session
+        response.should redirect_to(rate_user_path(@user, :token=>@user.token))
+      end
+    end
   end
   describe "GET register" do
     it "should redirect to root if user id is not found" do
@@ -236,8 +393,14 @@ describe UsersController do
         user.id.should == @user.id
         user.registering?.should be_true
       end
-      xit "should redirect to rating when user state is done" do
-
+    end
+    context "when user is found and in state of done" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: true)
+      end
+      it "should redirect to rate" do
+        get :register, {:id=>@user.id, :token=>@user.token}, valid_session
+        response.should redirect_to(rate_user_path(@user, :token=>@user.token))
       end
     end
   end
@@ -254,7 +417,25 @@ describe UsersController do
       get :registration_success, {:id=>@user.id, :token=>"#{@user.token}r"}, valid_session
       response.should redirect_to(root_path())
     end
-    context "when user is found" do
+    context "when user is found and is in state of activating" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: false, is_rating: true, aasm_state: "activating")
+      end
+      it "should redirect to activate" do
+        get :registration_success, {:id=>@user.id, :token=>@user.token}, valid_session
+        response.should redirect_to(activate_user_path(@user, :token=>@user.token))
+      end
+    end
+    context "when user is found and is in state of registering" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: false, is_rating: true, aasm_state: "registering")
+      end
+      it "should redirect to activate" do
+        get :registration_success, {:id=>@user.id, :token=>@user.token}, valid_session
+        response.should redirect_to(activate_user_path(@user, :token=>@user.token))
+      end
+    end
+    context "when user is found and in state of done" do
       before do
         @user = FactoryGirl.create(:user, is_done: true)
       end
@@ -324,7 +505,25 @@ describe UsersController do
       get :rating_success, {:id=>@user.id, :token=>"#{@user.token}r"}, valid_session
       response.should redirect_to(root_path())
     end
-    context "when user is found" do
+    context "when user is found and is in state of activating" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: false, is_rating: true, aasm_state: "activating")
+      end
+      it "should redirect to activate" do
+        get :rating_success, {:id=>@user.id, :token=>@user.token}, valid_session
+        response.should redirect_to(activate_user_path(@user, :token=>@user.token))
+      end
+    end
+    context "when user is found and is in state of registering" do
+      before do
+        @user = FactoryGirl.create(:user, is_done: false, is_rating: true, aasm_state: "registering")
+      end
+      it "should redirect to activate" do
+        get :rating_success, {:id=>@user.id, :token=>@user.token}, valid_session
+        response.should redirect_to(activate_user_path(@user, :token=>@user.token))
+      end
+    end
+    context "when user is found and in state of done" do
       before do
         @user = FactoryGirl.create(:user, is_done: true)
       end

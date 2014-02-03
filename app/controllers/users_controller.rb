@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_user, :except=>[:new, :create]
+  before_filter :move_to_rate, :only=>[:activate, :save_activation, :register, :save_registration]
   # GET /users/new
   def new
     @user = User.new
@@ -31,14 +32,18 @@ class UsersController < ApplicationController
 
   # PUT /users/1/save_activation
   def save_activation
-    @user.activate if @user.may_activate?
-
+    safe_user_attributes = params[:user].slice(:first_name, :last_name, :phone)
+    safe_user_attributes.merge!(:aasm_state=>"activating")
+    if @user.update_attributes(safe_user_attributes)
+      redirect_to(register_user_path(@user, :token=>@user.token))
+    else
+      render action: "activate"
+    end
   end
 
   # GET /users/1/register
   def register
     @user.register if @user.may_register?
-
   end
 
   # PUT /users/1/save_registration
@@ -54,6 +59,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/registration_success
   def registration_success
+    redirect_to(activate_user_path(@user, :token=>@user.token)) and return unless @user.done?
     #nothing to do here
   end
 
@@ -64,6 +70,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/rating_success
   def rating_success
+    redirect_to(activate_user_path(@user, :token=>@user.token)) and return unless @user.done?
     #nothing to do here
   end
 
@@ -72,6 +79,11 @@ class UsersController < ApplicationController
     @user = User.find_by_id_and_token(params[:id], params[:token])
     unless @user
       redirect_to(root_path()) and return false
+    end
+  end
+  def move_to_rate
+    if @user.done?
+      redirect_to(rate_user_path(@user, :token=>@user.token)) and return false
     end
   end
 end
