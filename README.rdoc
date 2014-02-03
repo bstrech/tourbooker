@@ -63,7 +63,9 @@ Set up your test db
 Run tests
 - bundle exec rspec
 
-
+==Mail Setup
+Default configuration is a basic SMTP. Sample configurations are in development.rb.
+NOTE: development environment is configured with perform_deliveries as false.
 
 =DEPLOYMENT SETUP
 I have set up the app to deploy with capistrano (just what I have used in the past), but the configurations have not been set up yet.
