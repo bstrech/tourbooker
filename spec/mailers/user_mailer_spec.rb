@@ -13,7 +13,7 @@ describe UserMailer do
     # Test the body of the sent email contains what we expect it to
     email.from.should == ["donotreply@example.com"]
     email.to.should == [@user.email]
-    email.subject.should == I18n.t("actionmailer.activate_user.subject")
+    email.subject.should == I18n.t("action_mailer.activate_user.subject")
     end
   end
   describe "tour_scheduled_confirmation mailer" do
@@ -27,7 +27,7 @@ describe UserMailer do
       # Test the body of the sent email contains what we expect it to
       email.from.should == ["donotreply@example.com"]
       email.to.should == [@user.email]
-      email.subject.should == I18n.t("actionmailer.tour_scheduled_confirmation.subject")
+      email.subject.should == I18n.t("action_mailer.tour_scheduled_confirmation.subject")
     end
   end
 
@@ -42,7 +42,7 @@ describe UserMailer do
       # Test the body of the sent email contains what we expect it to
       email.from.should == ["donotreply@example.com"]
       email.to.should == ["tours@example.com"]
-      email.subject.should == I18n.t("actionmailer.new_tour_scheduled.subject")
+      email.subject.should == I18n.t("action_mailer.new_tour_scheduled.subject")
     end
   end
 end
