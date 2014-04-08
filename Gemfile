@@ -23,7 +23,7 @@ group :test, :development do
   gem 'jasmine-rails'
   gem "factory_girl_rails", "~> 4.3.0"
   gem "rspec-rails", "~> 2.14.1"
-
+  gem "simplecov"
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
